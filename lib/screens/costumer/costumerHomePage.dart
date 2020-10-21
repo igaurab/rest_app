@@ -33,11 +33,23 @@ class _CostumerHomeScreenState extends State<CostumerHomeScreen> {
   }
 
   @override
+  void didChangeDependencies() {
+    // TODO: implement didChangeDependencies
+    super.didChangeDependencies();
+    var provider = Provider.of<OrderProvider>(context, listen: true);
+    setState(() {
+      totalCartItems = provider.totalOrders;
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     TextTheme textTheme = Theme.of(context).textTheme;
 
     var provider = Provider.of<OrderProvider>(context, listen: true);
-
+    setState(() {
+      totalCartItems = provider.totalOrders;
+    });
     return Scaffold(
         appBar: AppBar(
           leading: IconButton(
@@ -59,7 +71,7 @@ class _CostumerHomeScreenState extends State<CostumerHomeScreen> {
                             borderRadius: BorderRadius.circular(10.0)),
                         child: Center(
                           child: Text(
-                            totalCartItems.toString(),
+                            provider.totalOrders.toString(),
                             style: TextStyle(color: Colors.white, fontSize: 24),
                           ),
                         ))

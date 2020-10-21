@@ -9,6 +9,7 @@ import 'package:protoype/screens/ErrorPage.dart';
 import 'package:protoype/screens/PickUserScreen.dart';
 import 'package:protoype/screens/costumer/costumerData.dart';
 import 'package:protoype/screens/costumer/costumerFeedback.dart';
+import 'package:protoype/screens/costumer/costumerHomePage.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -51,7 +52,7 @@ class App extends StatelessWidget {
 
             // Once complete, show your application
             if (snapshot.connectionState == ConnectionState.done) {
-              return CostumerFeedbackForm();
+              return CostumerHomeScreen();
             }
 
             // Otherwise, show something whilst waiting for initialization to complete

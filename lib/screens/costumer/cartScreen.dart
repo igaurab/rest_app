@@ -12,18 +12,14 @@ class _CartScreenState extends State<CartScreen> {
   OrderProvider provider;
   Map<String, dynamic> orders = Map<String, dynamic>();
   double totalPrice = 0;
-
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
+
     setState(() {
       provider = Provider.of<OrderProvider>(context, listen: true);
       orders = provider.orders;
-      double total = 0;
-      orders.forEach((key, value) {
-        Map<String, dynamic> elem = orders[key]['item'];
-        total += double.parse(elem['price']);
-      });
-      totalPrice = total;
+      totalPrice = provider.totalPrice;
     });
     return Scaffold(
       appBar: AppBar(
@@ -43,17 +39,23 @@ class _CartScreenState extends State<CartScreen> {
                       return Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
-                            orders[item]['item']['name'],
-                            style: TextStyle(
-                                fontSize: 42, fontWeight: FontWeight.bold),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                orders[item]['item']['name'],
+                                style: TextStyle(
+                                    fontSize: 32, fontWeight: FontWeight.w500),
+                              ),
+                              Text(
+                                "\$ ${orders[item]['item']['price']}",
+                                style: TextStyle(
+                                    fontSize: 24, fontWeight: FontWeight.w400),
+                              ),
+                            ],
                           ),
                           Row(
                             children: [
-                              Text(
-                                provider.orders[item]['count'].toString(),
-                                style: TextStyle(fontSize: 30),
-                              ),
                               MaterialButton(
                                   child: Container(
                                     child: Icon(FeatherIcons.plus),
@@ -61,17 +63,17 @@ class _CartScreenState extends State<CartScreen> {
                                   onPressed: () {
                                     setState(() {
                                       provider.changeItem(foodId: item);
-                                      orders = provider.orders;
-                                      double total = 0;
-                                      orders.forEach((key, value) {
-                                        total += value['count'] *
-                                            double.parse(
-                                                orders[key]['item']['price']);
-                                      });
-                                      totalPrice = total;
-                                      print(totalPrice.toString());
+                                      totalPrice = provider.totalPrice;
                                     });
                                   }),
+                              Text(
+                                "x",
+                                style: TextStyle(fontSize: 30),
+                              ),
+                              Text(
+                                provider.orders[item]['count'].toString(),
+                                style: TextStyle(fontSize: 30),
+                              ),
                               MaterialButton(
                                   child: Container(
                                     child: Icon(FeatherIcons.minus),
@@ -80,15 +82,7 @@ class _CartScreenState extends State<CartScreen> {
                                     setState(() {
                                       provider.changeItem(
                                           foodId: item, remove: true);
-                                      orders = provider.orders;
-                                      double total = 0;
-                                      orders.forEach((key, value) {
-                                        total += value['count'] *
-                                            double.parse(
-                                                orders[key]['item']['price']);
-                                      });
-                                      totalPrice = total;
-                                      print(totalPrice.toString());
+                                      totalPrice = provider.totalPrice;
                                     });
                                   }),
                             ],
@@ -96,13 +90,44 @@ class _CartScreenState extends State<CartScreen> {
                         ],
                       );
                     })),
-            Text(totalPrice.toString()),
+            Spacer(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Text(
+                  "Total Price",
+                  style: TextStyle(fontWeight: FontWeight.w800, fontSize: 32.0),
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                Text(
+                  "\$ ${totalPrice.toString()}",
+                  style: TextStyle(fontWeight: FontWeight.w800, fontSize: 32.0),
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 20.0,
+            ),
             Container(
+                height: 70,
+                width: size.width,
+                decoration: BoxDecoration(
+                  color: Colors.blue,
+                ),
                 child: MaterialButton(
-                    child: Text("Order Now"),
-                    onPressed: () {
-                      provider.placeOrder();
-                    }))
+                    disabledColor: Colors.grey[400],
+                    child: Text(
+                      totalPrice == 0 ? "No items in cart" : "Order Now",
+                      style: TextStyle(fontSize: 22, color: Colors.white),
+                    ),
+                    onPressed: totalPrice == 0
+                        ? (null)
+                        : () async {
+                            await provider.placeOrder();
+                            Navigator.pop(context);
+                          }))
           ],
         ),
       ),
