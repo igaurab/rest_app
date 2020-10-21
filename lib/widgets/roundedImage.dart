@@ -25,7 +25,7 @@ class RoundedImage extends StatelessWidget {
               bottomLeft: Radius.circular(borderRadius[2]),
               bottomRight: Radius.circular(borderRadius[3]))
           : BorderRadius.circular(borderRadius),
-      child: Image.network(
+      child: Image.asset(
         this.imageUrl,
         height: height ?? 160,
         width: width ?? 250,

@@ -50,7 +50,7 @@ class _ChefHomeScreenState extends State<ChefHomeScreen> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                "Client id: ${clients[i]}",
+                                "Table No: ${clients[i]}",
                                 style: TextStyle(
                                   fontSize: 32,
                                   fontWeight: FontWeight.bold,
@@ -90,6 +90,9 @@ class _ChefHomeScreenState extends State<ChefHomeScreen> {
                                                 margin: EdgeInsets.all(10.0),
                                                 width: 10.0,
                                                 child: Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
                                                   children: [
                                                     Text(
                                                       items['name'].toString(),

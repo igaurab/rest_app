@@ -7,12 +7,8 @@ import 'package:protoype/providers/OrderProvider.dart';
 import 'package:protoype/routes/routeGenerator.dart';
 import 'package:protoype/screens/ErrorPage.dart';
 import 'package:protoype/screens/PickUserScreen.dart';
-import 'package:protoype/screens/admin/MenuScreen.dart';
-import 'package:protoype/screens/admin/addMenu.dart';
-import 'package:protoype/screens/auth/firebaseAuthDemo.dart';
-import 'package:protoype/screens/chef/chefHomePage.dart';
-import 'package:protoype/screens/costumer/costumerHomePage.dart';
-import 'package:protoype/screens/waiter/waiterHomePage.dart';
+import 'package:protoype/screens/costumer/costumerData.dart';
+import 'package:protoype/screens/costumer/costumerFeedback.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -28,6 +24,18 @@ class App extends StatelessWidget {
         ChangeNotifierProvider.value(value: OrderProvider()),
       ],
       child: MaterialApp(
+        theme: ThemeData(
+            textTheme: TextTheme(
+                headline1: TextStyle(
+                    fontSize: 42,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black87),
+                headline2: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                headline3: TextStyle(fontSize: 22, fontWeight: FontWeight.w800),
+                subtitle2: TextStyle(
+                  fontSize: 18,
+                ),
+                subtitle1: TextStyle(fontSize: 14))),
         initialRoute: '/',
         onGenerateRoute: RouteGenerator.generateRoute,
         debugShowCheckedModeBanner: false,
@@ -43,7 +51,7 @@ class App extends StatelessWidget {
 
             // Once complete, show your application
             if (snapshot.connectionState == ConnectionState.done) {
-              return PickUserScreen();
+              return CostumerFeedbackForm();
             }
 
             // Otherwise, show something whilst waiting for initialization to complete

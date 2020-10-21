@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:protoype/constants/strtings.dart';
+import 'package:protoype/data/dummy_data.dart';
 import 'package:protoype/models/food_item.dart';
 import 'package:protoype/providers/OrderProvider.dart';
 import 'package:protoype/widgets/addFoodItemsToCart.dart';
@@ -33,6 +34,8 @@ class _CostumerHomeScreenState extends State<CostumerHomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    TextTheme textTheme = Theme.of(context).textTheme;
+
     var provider = Provider.of<OrderProvider>(context, listen: true);
 
     return Scaffold(
@@ -89,6 +92,29 @@ class _CostumerHomeScreenState extends State<CostumerHomeScreen> {
                     data.docs[activeIndex].data().values.toList();
                 return Column(
                   children: [
+                    Container(
+                      height: 250,
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: dummyData.foodItems.length,
+                        itemBuilder: (context, index) {
+                          return Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 10.0, vertical: 0),
+                            child: GestureDetector(
+                              onTap: () => {},
+                              child: ItemDisplayWithImage(
+                                textTheme: textTheme,
+                                name: dummyData.foodItems[index].name,
+                                imageUrl: dummyData.foodItems[index].imageUrl,
+                                price:
+                                    dummyData.foodItems[index].price.toString(),
+                              ),
+                            ),
+                          );
+                        },
+                      ),
+                    ),
                     Container(
                       height: 80,
                       child: ListView.builder(

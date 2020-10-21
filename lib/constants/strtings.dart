@@ -31,4 +31,6 @@ class AppString {
   static const foodStatusInqueue = 'IN_QUEUE';
   static const foodStatusStarted = 'STARTED';
   static const foodStatusFinished = 'FINISHED';
+
+  
 }
