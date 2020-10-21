@@ -92,7 +92,11 @@ Drawer createDrawer(context) {
         ),
         ListTile(
           title: Text('About Us'),
-          onTap: () {},
+          onTap: () {
+            Navigator.of(context).pushNamed(
+              '/about',
+            );
+          },
         ),
       ],
     ),

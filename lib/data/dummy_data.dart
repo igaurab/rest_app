@@ -6,28 +6,28 @@ class Data {
   Data() {
     FoodItem item1 = FoodItem(
         id: "1",
-        name: "Roasted Burger",
+        name: "Paratha",
         category: "Cat1",
         price: "10.0",
-        imageUrl: ImageAsset.burger);
+        imageUrl: ImageAsset.paratha);
     FoodItem item2 = FoodItem(
         id: '2',
-        name: "Pizza",
+        name: "Paneer",
         category: "Cat1",
         price: "20.0",
-        imageUrl: ImageAsset.pizza);
+        imageUrl: ImageAsset.paneer);
     FoodItem item3 = FoodItem(
         id: '3',
-        name: "French Fry",
+        name: "Dosa",
         category: "Cat2",
         price: "30.0",
-        imageUrl: ImageAsset.fry);
+        imageUrl: ImageAsset.dosa);
     FoodItem item4 = FoodItem(
         id: '3',
-        name: "Special Paneer",
+        name: "Chowmin",
         category: "Indian",
         price: "30.0",
-        imageUrl: ImageAsset.paneer);
+        imageUrl: ImageAsset.chowmin);
 
     foodItems.add(item1);
     foodItems.add(item2);

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:protoype/AboutUs.dart';
 import 'package:protoype/screens/ErrorPage.dart';
 import 'package:protoype/screens/PickUserScreen.dart';
 import 'package:protoype/screens/admin/MenuScreen.dart';
@@ -49,6 +50,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => ViewOrderScreen());
       case '/roles':
         return MaterialPageRoute(builder: (_) => DefineRole());
+      case '/about':
+        return MaterialPageRoute(builder: (_) => AboutUs());
       default:
         // If there is no such named route in the switch statement, e.g. /third
         return _errorRoute();

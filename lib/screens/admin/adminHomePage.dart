@@ -23,7 +23,7 @@ class AdminHomeScreen extends StatelessWidget {
             SizedBox(
               height: 25.0,
             ),
-            Row(
+            Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 CardWithCenterText(
@@ -36,16 +36,22 @@ class AdminHomeScreen extends StatelessWidget {
                       returnGradient([Colors.blueAccent, Colors.blue[300]]),
                   text: AppString.menu,
                 ),
+                SizedBox(
+                  height: 10.0,
+                ),
                 CardWithCenterText(
                   gradient:
                       returnGradient([Colors.orangeAccent, Colors.orange[300]]),
                   text: AppString.orders,
+                  onTap: () => Navigator.of(context).pushNamed(
+                    '/view_order',
+                  ),
                 ),
-                CardWithCenterText(
-                  gradient:
-                      returnGradient([Colors.greenAccent, Colors.green[300]]),
-                  text: AppString.transaction,
-                )
+                // CardWithCenterText(
+                //   gradient:
+                //       returnGradient([Colors.greenAccent, Colors.green[300]]),
+                //   text: AppString.transaction,
+                // )
               ],
             ),
           ],
