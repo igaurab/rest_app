@@ -4,8 +4,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:protoype/constants/strtings.dart';
 import 'package:random_string/random_string.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class OrderProvider with ChangeNotifier {
+  String clientId = "1";
   Map<String, dynamic> orders = Map<String, dynamic>();
   int totalOrders = 0;
   double totalPrice = 0;
@@ -71,19 +73,26 @@ class OrderProvider with ChangeNotifier {
 
   placeOrder() async {
     //TODO: Add Seperate client id's
-
-    String clientId = "1";
     var documentRef = FirebaseFirestore.instance;
     String orderId = randomNumeric(10).toString();
     Map<String, dynamic> _data = {orderId: orders};
-    print(_data);
-    await documentRef.collection('orders').doc(clientId).get().then((value) {
-      if (value.exists) {
-        documentRef.collection('orders').doc(clientId).update(_data);
-      } else {
-        documentRef.collection('orders').doc(clientId).set(_data);
+    // print(_data);
+    orders.forEach((key, value) {
+      int count = value['count'];
+      for (int i = 0; i < count; i++) {
+        Map<String, dynamic> data = orders[key]['item'];
+        data['client'] = clientId;
+        documentRef.collection('order').doc().set(data);
       }
     });
+
+    // await documentRef.collection('orders').doc(clientId).get().then((value) {
+    //   if (value.exists) {
+    //     documentRef.collection('orders').doc(clientId).update(_data);
+    //   } else {
+    //     documentRef.collection('orders').doc(clientId).set(_data);
+    //   }
+    // });
     print('Placed Order');
     orders.clear();
     totalOrders = 0;

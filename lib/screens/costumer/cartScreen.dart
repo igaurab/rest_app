@@ -134,7 +134,7 @@ class _CartScreenState extends State<CartScreen> {
                         ? (null)
                         : () async {
                             await provider.placeOrder();
-                            Navigator.pop(context);
+                            // Navigator.pop(context);
                           }))
           ],
         ),
