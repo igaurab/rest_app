@@ -259,6 +259,7 @@ class _CostumerHomeScreenState extends State<CostumerHomeScreen> {
                                         MediaQuery.of(context).size.width * 0.5,
                                     child: Text(
                                       item['name'].toString(),
+                                      overflow: TextOverflow.fade,
                                       style: TextStyle(
                                           fontSize: 28,
                                           fontWeight: FontWeight.bold),

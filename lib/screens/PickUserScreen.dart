@@ -15,39 +15,42 @@ class PickUserScreen extends StatelessWidget {
             height: 25.0,
           ),
           Container(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                ImageWithVerticalLabel(
-                  assetUrl: ImageAsset.admin,
-                  text: AppString.admin,
-                  onTap: () => Navigator.of(context).pushNamed(
-                    '/roles',
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  ImageWithVerticalLabel(
+                    assetUrl: ImageAsset.admin,
+                    text: AppString.admin,
+                    onTap: () => Navigator.of(context).pushNamed(
+                      '/roles',
+                    ),
                   ),
-                ),
-                ImageWithVerticalLabel(
-                  assetUrl: ImageAsset.costumers,
-                  text: AppString.costumers,
-                  onTap: () => Navigator.of(context).pushNamed(
-                    '/costumers',
+                  ImageWithVerticalLabel(
+                    assetUrl: ImageAsset.costumers,
+                    text: AppString.costumers,
+                    onTap: () => Navigator.of(context).pushNamed(
+                      '/costumers',
+                    ),
                   ),
-                ),
-                ImageWithVerticalLabel(
-                  assetUrl: ImageAsset.chef,
-                  text: AppString.chef,
-                  onTap: () => Navigator.of(context).pushNamed(
-                    '/roles',
+                  ImageWithVerticalLabel(
+                    assetUrl: ImageAsset.chef,
+                    text: AppString.chef,
+                    onTap: () => Navigator.of(context).pushNamed(
+                      '/roles',
+                    ),
                   ),
-                ),
-                ImageWithVerticalLabel(
-                  assetUrl: ImageAsset.waiter,
-                  text: AppString.waiter,
-                  onTap: () => Navigator.of(context).pushNamed(
-                    '/roles',
-                  ),
-                )
-              ],
+                  ImageWithVerticalLabel(
+                    assetUrl: ImageAsset.waiter,
+                    text: AppString.waiter,
+                    onTap: () => Navigator.of(context).pushNamed(
+                      '/roles',
+                    ),
+                  )
+                ],
+              ),
             ),
           ),
         ],

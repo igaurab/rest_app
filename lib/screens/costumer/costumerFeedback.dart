@@ -45,7 +45,7 @@ class _CostumerFeedbackFormState extends State<CostumerFeedbackForm> {
                 ),
                 TextField(
                   controller: feedbackController,
-                  maxLines: 15,
+                  maxLines: 10,
                   style: TextStyle(fontSize: 24),
                   decoration: InputDecoration(
                     fillColor: Colors.grey[300],
