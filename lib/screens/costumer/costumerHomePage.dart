@@ -122,6 +122,7 @@ class _CostumerHomeScreenState extends State<CostumerHomeScreen> {
                       Container(
                         height: 250,
                         child: ListView.builder(
+                          shrinkWrap: true,
                           scrollDirection: Axis.horizontal,
                           itemCount: dummyData.foodItems.length,
                           itemBuilder: (context, index) {
@@ -202,6 +203,7 @@ class _CostumerHomeScreenState extends State<CostumerHomeScreen> {
                             }),
                       ),
                       ListView.builder(
+                        physics: NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
                         itemCount: activeCategoryData.length,
                         itemBuilder: (context, index) {
@@ -256,14 +258,9 @@ class _CostumerHomeScreenState extends State<CostumerHomeScreen> {
                                     width:
                                         MediaQuery.of(context).size.width * 0.5,
                                     child: Text(
-                                      
                                       item['name'].toString(),
                                       style: TextStyle(
-                                        
-                                          fontSize: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                              0.05,
+                                          fontSize: 28,
                                           fontWeight: FontWeight.bold),
                                     ),
                                   ),

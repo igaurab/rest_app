@@ -43,6 +43,7 @@ class _ChefHomeScreenState extends State<ChefHomeScreen> {
                 child: Column(
                   children: [
                     ListView.builder(
+                        physics: NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
                         itemCount: clients.length,
                         itemBuilder: (context, i) {
@@ -57,6 +58,7 @@ class _ChefHomeScreenState extends State<ChefHomeScreen> {
                                 ),
                               ),
                               ListView.builder(
+                                  physics: NeverScrollableScrollPhysics(),
                                   shrinkWrap: true,
                                   itemCount: orders.length,
                                   itemBuilder: (context, j) {
@@ -81,6 +83,8 @@ class _ChefHomeScreenState extends State<ChefHomeScreen> {
                                           ),
                                         ),
                                         ListView.builder(
+                                            physics:
+                                                NeverScrollableScrollPhysics(),
                                             shrinkWrap: true,
                                             itemCount: data.keys.length,
                                             itemBuilder: (context, k) {
