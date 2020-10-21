@@ -27,20 +27,20 @@ class _ChefHomeScreenState extends State<ChefHomeScreen> {
       ),
       body: Container(
           padding: EdgeInsets.all(25.0),
-          child: SingleChildScrollView(
-            child: StreamBuilder<QuerySnapshot>(
-              stream: orders.snapshots(),
-              builder: (context, snapshots) {
-                if (!snapshots.hasData) {
-                  return CircularProgressIndicator();
-                }
-                List orders = snapshots.data.docs[0].data().keys.toList();
-                List clients = snapshots.data.docs.map((e) => e.id).toList();
-                List<QueryDocumentSnapshot> docs = snapshots.data.docs;
+          child: StreamBuilder<QuerySnapshot>(
+            stream: orders.snapshots(),
+            builder: (context, snapshots) {
+              if (!snapshots.hasData) {
+                return CircularProgressIndicator();
+              }
+              List orders = snapshots.data.docs[0].data().keys.toList();
+              List clients = snapshots.data.docs.map((e) => e.id).toList();
+              List<QueryDocumentSnapshot> docs = snapshots.data.docs;
 
-                print(clients);
-                print(orders);
-                return Column(
+              print(clients);
+              print(orders);
+              return SingleChildScrollView(
+                child: Column(
                   children: [
                     ListView.builder(
                         shrinkWrap: true,
@@ -64,12 +64,20 @@ class _ChefHomeScreenState extends State<ChefHomeScreen> {
                                         docs[i].data()[orders[j]];
                                     print("LENGHT" + data.keys.toString());
                                     return Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
-                                        Text(
-                                          "\tOrder id: ${orders[j]}",
-                                          style: TextStyle(
-                                            fontSize: 22,
-                                            fontWeight: FontWeight.bold,
+                                        Container(
+                                          width:
+                                              MediaQuery.of(context).size.width,
+                                          color: Colors.grey[200],
+                                          padding: EdgeInsets.all(15.0),
+                                          child: Text(
+                                            "\tOrder id: ${orders[j]}",
+                                            style: TextStyle(
+                                              fontSize: 22,
+                                              fontWeight: FontWeight.bold,
+                                            ),
                                           ),
                                         ),
                                         ListView.builder(
@@ -97,7 +105,7 @@ class _ChefHomeScreenState extends State<ChefHomeScreen> {
                                                     Text(
                                                       items['name'].toString(),
                                                       style: TextStyle(
-                                                          fontSize: 32),
+                                                          fontSize: 24),
                                                     ),
                                                     GestureDetector(
                                                       onTap: () {
@@ -218,7 +226,7 @@ class _ChefHomeScreenState extends State<ChefHomeScreen> {
                                                       child: Text(
                                                         items['status'],
                                                         style: TextStyle(
-                                                            fontSize: 32),
+                                                            fontSize: 24),
                                                       ),
                                                     )
                                                   ],
@@ -232,9 +240,9 @@ class _ChefHomeScreenState extends State<ChefHomeScreen> {
                           );
                         })
                   ],
-                );
-              },
-            ),
+                ),
+              );
+            },
           )),
     );
   }

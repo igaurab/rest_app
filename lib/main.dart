@@ -7,6 +7,7 @@ import 'package:protoype/providers/OrderProvider.dart';
 import 'package:protoype/routes/routeGenerator.dart';
 import 'package:protoype/screens/ErrorPage.dart';
 import 'package:protoype/screens/PickUserScreen.dart';
+import 'package:protoype/screens/chef/chefHomePage.dart';
 import 'package:protoype/screens/costumer/costumerData.dart';
 import 'package:protoype/screens/costumer/costumerFeedback.dart';
 import 'package:protoype/screens/costumer/costumerHomePage.dart';
@@ -82,7 +83,7 @@ class _AppState extends State<App> {
 
             // Once complete, show your application
             if (snapshot.connectionState == ConnectionState.done) {
-              return ViewOrderScreen();
+              return ChefHomeScreen();
             }
 
             // Otherwise, show something whilst waiting for initialization to complete
