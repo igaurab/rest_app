@@ -10,13 +10,43 @@ import 'package:protoype/screens/PickUserScreen.dart';
 import 'package:protoype/screens/costumer/costumerData.dart';
 import 'package:protoype/screens/costumer/costumerFeedback.dart';
 import 'package:protoype/screens/costumer/costumerHomePage.dart';
+import 'package:protoype/screens/costumer/viewOrder.dart';
+import 'package:protoype/screens/splashScreen.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
   runApp(App());
 }
 
-class App extends StatelessWidget {
+class App extends StatefulWidget {
+  @override
+  _AppState createState() => _AppState();
+}
+
+class _AppState extends State<App> {
+  SharedPreferences pref;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _init();
+  }
+
+  _init() async {
+    pref = await SharedPreferences.getInstance();
+    if (!pref.containsKey('admin_pass')) {
+      pref.setString('admin_pass', 'admin');
+    }
+    if (!pref.containsKey('chef_pass')) {
+      pref.setString('chef_pass', 'chef');
+    }
+    if (!pref.containsKey('waiter_pass')) {
+      pref.setString('waiter_pass', 'waiter');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
@@ -52,7 +82,7 @@ class App extends StatelessWidget {
 
             // Once complete, show your application
             if (snapshot.connectionState == ConnectionState.done) {
-              return CostumerHomeScreen();
+              return ViewOrderScreen();
             }
 
             // Otherwise, show something whilst waiting for initialization to complete

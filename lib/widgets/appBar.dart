@@ -30,3 +30,71 @@ AppBar buildAppBar({BuildContext context}) {
     ],
   );
 }
+
+Drawer createDrawer(context) {
+  return Drawer(
+    child: ListView(
+      children: <Widget>[
+        DrawerHeader(
+            child: Text(
+              "Darbar House",
+              style: TextStyle(
+                  fontSize: 26.0,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white),
+            ),
+            decoration: BoxDecoration(
+              color: Colors.blueAccent,
+            )),
+        ListTile(
+          title: Text('Home'),
+          onTap: () {
+            Navigator.of(context).pushNamed(
+              '/costumers',
+            );
+          },
+        ),
+        ListTile(
+          title: Text('Login'),
+          onTap: () {
+            Navigator.of(context).pushNamed(
+              '/pickuser',
+            );
+          },
+        ),
+        ListTile(
+          title: Text('View Order Progress'),
+          onTap: () {
+            Navigator.of(context).pushNamed(
+              '/view_order',
+            );
+          },
+        ),
+        ListTile(
+          title: Text('Provide Feedback'),
+          onTap: () {
+            Navigator.of(context).pushNamed(
+              '/feedback',
+            );
+          },
+        ),
+        ListTile(
+          title: Text('Discounts and copouns'),
+          onTap: () {
+            Navigator.of(context).pushNamed(
+              '/costumersData',
+            );
+          },
+        ),
+        ListTile(
+          title: Text('Register'),
+          onTap: () {},
+        ),
+        ListTile(
+          title: Text('About Us'),
+          onTap: () {},
+        ),
+      ],
+    ),
+  );
+}

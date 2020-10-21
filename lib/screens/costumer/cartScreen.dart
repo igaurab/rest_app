@@ -28,7 +28,15 @@ class _CartScreenState extends State<CartScreen> {
       body: Padding(
         padding: const EdgeInsets.all(25.0),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            Text(
+              "Your Orders",
+              style: TextStyle(fontSize: 32, fontWeight: FontWeight.w700),
+            ),
+            SizedBox(
+              height: 25.0,
+            ),
             Container(
                 child: ListView.builder(
                     shrinkWrap: true,

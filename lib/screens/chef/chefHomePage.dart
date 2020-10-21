@@ -116,6 +116,30 @@ class _ChefHomeScreenState extends State<ChefHomeScreen> {
                                                             {
                                                               items['status'] =
                                                                   AppString
+                                                                      .foodStatus25;
+                                                            }
+                                                            break;
+                                                          case AppString
+                                                              .foodStatus25:
+                                                            {
+                                                              items['status'] =
+                                                                  AppString
+                                                                      .foodStatus50;
+                                                            }
+                                                            break;
+                                                          case AppString
+                                                              .foodStatus50:
+                                                            {
+                                                              items['status'] =
+                                                                  AppString
+                                                                      .foodStatus75;
+                                                            }
+                                                            break;
+                                                          case AppString
+                                                              .foodStatus75:
+                                                            {
+                                                              items['status'] =
+                                                                  AppString
                                                                       .foodStatusFinished;
 
                                                               var documentRef =

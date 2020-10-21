@@ -68,6 +68,9 @@ class _CostumerDataFormState extends State<CostumerDataForm> {
                           .collection('costumer_data')
                           .doc()
                           .set(data);
+                      Navigator.of(context).pushNamed(
+                        '/thank_you_screen',
+                      );
                     },
                     child: Text(
                       "Submit",

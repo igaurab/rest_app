@@ -1,6 +1,6 @@
 class AppString {
   static const appName = "Order";
-  static const resturantName = "Durbar House";
+  static const resturantName = "Darbar House";
   static const resturantLocation = "Jhaulakhel";
 
   static const todaySpecial = "Today's Special";
@@ -30,7 +30,8 @@ class AppString {
 
   static const foodStatusInqueue = 'IN_QUEUE';
   static const foodStatusStarted = 'STARTED';
+  static const foodStatus25 = '25';
+  static const foodStatus50 = '50';
+  static const foodStatus75 = '75';
   static const foodStatusFinished = 'FINISHED';
-
-  
 }

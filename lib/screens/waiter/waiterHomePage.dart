@@ -30,58 +30,77 @@ class WaiterHomeScreenState extends State<WaiterHomeScreen> {
             }
 
             print(snapshots.data.docs[0].data().toString());
-            return ListView.builder(
-              itemCount: snapshots.data.docs.length,
-              itemBuilder: (context, index) {
-                String docId = snapshots.data.docs[index].id;
+            return Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text("Orders",
+                    style:
+                        TextStyle(fontSize: 42.0, fontWeight: FontWeight.bold)),
+                SizedBox(
+                  height: 25.0,
+                ),
+                ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: snapshots.data.docs.length,
+                  itemBuilder: (context, index) {
+                    String docId = snapshots.data.docs[index].id;
 
-                Map<String, dynamic> item = snapshots.data.docs[index].data();
-                return Container(
-                  margin: EdgeInsets.all(10.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        item['foodName'].toString(),
-                        style: TextStyle(
-                            fontSize: 32, fontWeight: FontWeight.bold),
-                      ),
-                      Row(
-                        children: [
-                          Text(
-                            "Table:  ${item['client_id']}",
-                            style: TextStyle(
-                                fontSize: 22, fontWeight: FontWeight.w600),
-                          ),
-                          SizedBox(
-                            width: 10.0,
-                          ),
-                          MaterialButton(
-                            color: Colors.green[600],
-                            onPressed: () {
-                              item['delivered'] = "true";
-                              print(docId);
+                    Map<String, dynamic> item =
+                        snapshots.data.docs[index].data();
+                    return item['delivered'] == "false"
+                        ? Container(
+                            margin: EdgeInsets.all(10.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  item['foodName'].toString(),
+                                  style: TextStyle(
+                                      fontSize: 32,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                                Row(
+                                  children: [
+                                    Text(
+                                      "Table:  ${item['client_id']}",
+                                      style: TextStyle(
+                                          fontSize: 22,
+                                          fontWeight: FontWeight.w600),
+                                    ),
+                                    SizedBox(
+                                      width: 10.0,
+                                    ),
+                                    MaterialButton(
+                                      color: Colors.green[600],
+                                      onPressed: () {
+                                        item['delivered'] = "true";
+                                        print(docId);
 
-                              var documentRef = FirebaseFirestore.instance;
-                              documentRef
-                                  .collection('waiter')
-                                  .doc(docId)
-                                  .update(item);
-                            },
-                            child: Text(
-                              "Delivered",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.w600),
+                                        var documentRef =
+                                            FirebaseFirestore.instance;
+                                        documentRef
+                                            .collection('waiter')
+                                            .doc(docId)
+                                            .update(item);
+                                      },
+                                      child: Text(
+                                        "Deliver",
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 22,
+                                            fontWeight: FontWeight.w600),
+                                      ),
+                                    )
+                                  ],
+                                )
+                              ],
                             ),
                           )
-                        ],
-                      )
-                    ],
-                  ),
-                );
-              },
+                        : Container();
+                  },
+                ),
+              ],
             );
           },
         ),

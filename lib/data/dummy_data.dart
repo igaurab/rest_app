@@ -18,14 +18,21 @@ class Data {
         imageUrl: ImageAsset.pizza);
     FoodItem item3 = FoodItem(
         id: '3',
-        name: "Finger Fried",
+        name: "French Fry",
         category: "Cat2",
         price: "30.0",
         imageUrl: ImageAsset.fry);
+    FoodItem item4 = FoodItem(
+        id: '3',
+        name: "Special Paneer",
+        category: "Indian",
+        price: "30.0",
+        imageUrl: ImageAsset.paneer);
 
     foodItems.add(item1);
     foodItems.add(item2);
     foodItems.add(item3);
+    foodItems.add(item4);
   }
 }
 

@@ -23,7 +23,7 @@ class PickUserScreen extends StatelessWidget {
                   assetUrl: ImageAsset.admin,
                   text: AppString.admin,
                   onTap: () => Navigator.of(context).pushNamed(
-                    '/admin',
+                    '/roles',
                   ),
                 ),
                 ImageWithVerticalLabel(
@@ -37,14 +37,14 @@ class PickUserScreen extends StatelessWidget {
                   assetUrl: ImageAsset.chef,
                   text: AppString.chef,
                   onTap: () => Navigator.of(context).pushNamed(
-                    '/chef',
+                    '/roles',
                   ),
                 ),
                 ImageWithVerticalLabel(
                   assetUrl: ImageAsset.waiter,
                   text: AppString.waiter,
                   onTap: () => Navigator.of(context).pushNamed(
-                    '/waiter',
+                    '/roles',
                   ),
                 )
               ],
