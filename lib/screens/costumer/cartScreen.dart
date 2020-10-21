@@ -53,12 +53,14 @@ class _CartScreenState extends State<CartScreen> {
                               Text(
                                 orders[item]['item']['name'],
                                 style: TextStyle(
-                                    fontSize: 32, fontWeight: FontWeight.w500),
+                                    fontSize: 32,
+                                    fontWeight: FontWeight.w500),
                               ),
                               Text(
                                 "\$ ${orders[item]['item']['price']}",
                                 style: TextStyle(
-                                    fontSize: 24, fontWeight: FontWeight.w400),
+                                    fontSize: 24,
+                                    fontWeight: FontWeight.w400),
                               ),
                             ],
                           ),
@@ -104,14 +106,16 @@ class _CartScreenState extends State<CartScreen> {
               children: [
                 Text(
                   "Total Price",
-                  style: TextStyle(fontWeight: FontWeight.w800, fontSize: 32.0),
+                  style:
+                      TextStyle(fontWeight: FontWeight.w800, fontSize: 32.0),
                 ),
                 SizedBox(
                   width: 10,
                 ),
                 Text(
                   "\$ ${totalPrice.toString()}",
-                  style: TextStyle(fontWeight: FontWeight.w800, fontSize: 32.0),
+                  style:
+                      TextStyle(fontWeight: FontWeight.w800, fontSize: 32.0),
                 ),
               ],
             ),

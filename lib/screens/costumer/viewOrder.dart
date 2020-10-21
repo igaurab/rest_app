@@ -54,6 +54,7 @@ class _ViewOrderScreenState extends State<ViewOrderScreen> {
                 return Column(
                   children: [
                     ListView.builder(
+                        physics: NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
                         itemCount: clients.length,
                         itemBuilder: (context, i) {
@@ -68,6 +69,7 @@ class _ViewOrderScreenState extends State<ViewOrderScreen> {
                                 ),
                               ),
                               ListView.builder(
+                                  physics: NeverScrollableScrollPhysics(),
                                   shrinkWrap: true,
                                   itemCount: orders.length,
                                   itemBuilder: (context, j) {
@@ -94,6 +96,8 @@ class _ViewOrderScreenState extends State<ViewOrderScreen> {
                                         ),
                                         Divider(color: Colors.grey),
                                         ListView.builder(
+                                            physics:
+                                                NeverScrollableScrollPhysics(),
                                             shrinkWrap: true,
                                             itemCount: data.keys.length,
                                             itemBuilder: (context, k) {

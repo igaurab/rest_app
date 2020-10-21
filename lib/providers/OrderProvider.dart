@@ -77,6 +77,9 @@ class OrderProvider with ChangeNotifier {
     String orderId = randomNumeric(10).toString();
     Map<String, dynamic> _data = {orderId: orders};
     print(_data);
+
+    
+
     await documentRef.collection('orders').doc(clientId).get().then((value) {
       if (value.exists) {
         documentRef.collection('orders').doc(clientId).update(_data);
