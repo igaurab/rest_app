@@ -7,10 +7,12 @@ import 'package:protoype/providers/OrderProvider.dart';
 import 'package:protoype/routes/routeGenerator.dart';
 import 'package:protoype/screens/ErrorPage.dart';
 import 'package:protoype/screens/PickUserScreen.dart';
+import 'package:protoype/screens/auth/RegisterDummy.dart';
 import 'package:protoype/screens/chef/chefHomePage.dart';
 import 'package:protoype/screens/costumer/costumerData.dart';
 import 'package:protoype/screens/costumer/costumerFeedback.dart';
 import 'package:protoype/screens/costumer/costumerHomePage.dart';
+import 'package:protoype/screens/costumer/dummyCheckout.dart';
 import 'package:protoype/screens/costumer/viewOrder.dart';
 import 'package:protoype/screens/splashScreen.dart';
 import 'package:provider/provider.dart';
@@ -83,7 +85,7 @@ class _AppState extends State<App> {
 
             // Once complete, show your application
             if (snapshot.connectionState == ConnectionState.done) {
-              return SplashScreen();
+              return CheckoutDummyForm();
             }
 
             // Otherwise, show something whilst waiting for initialization to complete

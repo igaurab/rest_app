@@ -94,10 +94,7 @@ class OrderProvider with ChangeNotifier {
     //   }
     // });
     print('Placed Order');
-    orders.clear();
-    totalOrders = 0;
-    totalPrice = 0;
-    foodItems.clear();
+
     notifyListeners();
   }
 }

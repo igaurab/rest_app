@@ -65,6 +65,10 @@ class _CostumerHomeScreenState extends State<CostumerHomeScreen> {
           elevation: 0,
           centerTitle: true,
           actions: [
+            IconButton(
+              onPressed: () => {},
+              icon: Icon(FeatherIcons.search),
+            ),
             Row(
               children: [
                 totalCartItems != 0
@@ -89,10 +93,6 @@ class _CostumerHomeScreenState extends State<CostumerHomeScreen> {
                 ),
               ],
             ),
-            IconButton(
-              onPressed: () => {},
-              icon: Icon(FeatherIcons.search),
-            )
           ],
         ),
         body: SingleChildScrollView(

@@ -13,20 +13,13 @@ AppBar buildAppBar({BuildContext context}) {
     centerTitle: true,
     actions: [
       IconButton(
-        onPressed: () {
-          // Navigator.pushReplacement(
-          //   context,
-          //   MaterialPageRoute(
-          //     builder: (context) => CartScreen(),
-          //   ),
-          // );
-        },
-        icon: Icon(FeatherIcons.shoppingCart),
-      ),
-      IconButton(
         onPressed: () => {},
         icon: Icon(FeatherIcons.search),
-      )
+      ),
+      IconButton(
+        onPressed: () {},
+        icon: Icon(FeatherIcons.shoppingCart),
+      ),
     ],
   );
 }
@@ -88,7 +81,11 @@ Drawer createDrawer(context) {
         ),
         ListTile(
           title: Text('Register'),
-          onTap: () {},
+          onTap: () {
+            Navigator.of(context).pushNamed(
+              '/dummy_reg',
+            );
+          },
         ),
         ListTile(
           title: Text('About Us'),

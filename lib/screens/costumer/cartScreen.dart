@@ -134,7 +134,9 @@ class _CartScreenState extends State<CartScreen> {
                         ? (null)
                         : () async {
                             await provider.placeOrder();
-                            // Navigator.pop(context);
+                            Navigator.of(context).pushNamed(
+                              '/dummy_cart',
+                            );
                           }))
           ],
         ),

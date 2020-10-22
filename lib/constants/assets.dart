@@ -9,6 +9,8 @@ class ImageAsset {
   static const String dosa = "assets/images/dosa.png";
   static const String paratha = "assets/images/paratha.png";
   static const String paneer = "assets/images/paneer.png";
-
   static const String thanks = "assets/images/thanks.png";
+
+  static const String paypal = "assets/images/paypal.png";
+  static const String credit = "assets/images/credit.png";
 }
